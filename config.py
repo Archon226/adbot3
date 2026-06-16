@@ -7,15 +7,15 @@ from typing import List
 
 class Config:
     # ── Bot credentials (get from @BotFather) ─────────────────────────────────
-    BOT_TOKEN: str = os.getenv("BOT_TOKEN", "8261194661:AAFdto4jcpBgMh4YmG5zQfuWCK9DTW1WReI")
+    BOT_TOKEN: str = os.getenv("BOT_TOKEN", "8652015414:AAHqLIcZtKkARxSdCds3RunXi5pmbiqazmE")
 
     # ── Telegram API credentials (get from my.telegram.org) ──────────────────
-    API_ID: int = int(os.getenv("API_ID", "29687194"))
-    API_HASH: str = os.getenv("API_HASH", "fb286056a72033e9870cacb170b31fcd")
+    API_ID: int = int(os.getenv("API_ID", "23305189"))
+    API_HASH: str = os.getenv("API_HASH", "5ca0b27bfab91b5e087ba2c8f0518d25")
 
     # ── Admin Telegram user IDs (get yours via @userinfobot) ─────────────────
     ADMIN_IDS: List[int] = [
-        int(x) for x in os.getenv("ADMIN_IDS", "1899208318").split(",") if x.strip().isdigit()
+        int(x) for x in os.getenv("ADMIN_IDS", "963297412").split(",") if x.strip().isdigit()
     ]
 
     # ── Default broadcast config (overridable via /setconfig) ─────────────────
