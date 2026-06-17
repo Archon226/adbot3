@@ -4,6 +4,7 @@ Telegram Group Broadcaster Bot — fully inline-button driven UI
 
 import asyncio
 import logging
+from pyrogram import Client, filters, enums
 from pyrogram import Client, filters
 from pyrogram.types import (
     Message, CallbackQuery,
@@ -23,6 +24,7 @@ bot = Client(
     api_id=Config.API_ID,
     api_hash=Config.API_HASH,
     bot_token=Config.BOT_TOKEN,
+    parse_mode=enums.ParseMode.HTML,  # add this
 )
 
 db = Database()
@@ -103,6 +105,17 @@ def admin_only(func):
             return
         return await func(client, message)
     wrapper.__name__ = func.__name__
+    return wrapper
+
+from functools import wraps
+
+def admin_only(func):
+    @wraps(func)
+    async def wrapper(client, message: Message):
+        if not is_admin(message.from_user.id):
+            await message.reply("⛔ Unauthorized.")
+            return
+        return await func(client, message)
     return wrapper
 
 def admin_cb(func):
